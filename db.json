@@ -1,0 +1,49 @@
+{
+  "EmployeeList": [
+    {
+      "firstName": "sfs",
+      "lastName": "sdfdh",
+      "Email": "abc.def@gmail.com",
+      "Phone": "35643654",
+      "id": 4
+    },
+    {
+      "firstName": "vina",
+      "lastName": "jenk",
+      "Email": "09.abc@gmail.com",
+      "Phone": "10923273",
+      "id": 6
+    },
+    {
+      "firstName": "gill",
+      "lastName": "man",
+      "Email": "gil.mn@gmail.com",
+      "Phone": "0913237473",
+      "id": 7
+    },
+    {
+      "firstName": "geloo",
+      "lastName": "asf",
+      "Email": "abc.trd@gmail.com",
+      "Phone": "237564365",
+      "id": 8
+    },
+    {
+      "firstName": "hue",
+      "lastName": "asdgh",
+      "Email": "abc.def@gmail.com",
+      "Phone": "093264523",
+      "id": 9
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

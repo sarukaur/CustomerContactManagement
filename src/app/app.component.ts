@@ -22,7 +22,7 @@ export class AppComponent implements OnInit{
 
   }
   ngOnInit(): void {
-    this.getAllEmployees();
+    this.getAllCustomers();
   }
   openDialog() {
     this.dialog.open(DialogComponent, {
@@ -30,13 +30,13 @@ export class AppComponent implements OnInit{
     }).afterClosed().subscribe(val=>{
       if(val==='save')
       {
-      this.getAllEmployees();
+      this.getAllCustomers();
       }
     })
   }
 
-  getAllEmployees(){
-    this.api.getEmployeeList()
+  getAllCustomers(){
+    this.api.getCustomerList()
     .subscribe({
       next:(res)=>{
         this.dataSource=new MatTableDataSource(res);
@@ -48,7 +48,7 @@ export class AppComponent implements OnInit{
       }
     })
   }
-  modifyEmp(row : any)
+  modifyCust(row : any)
   {
     this.dialog.open(DialogComponent,{ 
       width:'30%',
@@ -56,17 +56,17 @@ export class AppComponent implements OnInit{
     }).afterClosed().subscribe(val=>{
       if(val==='update')
       {
-        this.getAllEmployees();
+        this.getAllCustomers();
       }
     })
   }
-  deleteEmp(id:number)
+  deleteCust(id:number)
   {
     this.api.deleteRecord(id)
     .subscribe({
       next:(res)=>{
-        alert("Employee record deleted successfully");
-        this.getAllEmployees();
+        alert("Customer record deleted successfully");
+        this.getAllCustomers();
       },
       error:()=>{
         alert("Error while deleting the record");

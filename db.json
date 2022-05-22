@@ -1,14 +1,14 @@
 {
-  "EmployeeList": [
+  "CustomerList": [
     {
       "firstName": "sfs",
       "lastName": "sdfdh",
       "Email": "abc.def@gmail.com",
-      "Phone": "35643654",
+      "Phone": "35643619",
       "id": 4
     },
     {
-      "firstName": "vina",
+      "firstName": "vinay",
       "lastName": "jenk",
       "Email": "09.abc@gmail.com",
       "Phone": "10923273",
@@ -22,18 +22,25 @@
       "id": 7
     },
     {
-      "firstName": "geloo",
-      "lastName": "asf",
-      "Email": "abc.trd@gmail.com",
-      "Phone": "237564365",
-      "id": 8
-    },
-    {
       "firstName": "hue",
       "lastName": "asdgh",
       "Email": "abc.def@gmail.com",
       "Phone": "093264523",
       "id": 9
+    },
+    {
+      "firstName": "sam",
+      "lastName": "nick",
+      "Email": "sam.nik@gmail.com",
+      "Phone": "65757576",
+      "id": 10
+    },
+    {
+      "firstName": "Ally",
+      "lastName": "Fun",
+      "Email": "ally.fn@gmail.com",
+      "Phone": "1232747234",
+      "id": 11
     }
   ],
   "comments": [

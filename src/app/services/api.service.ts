@@ -8,19 +8,20 @@ export class ApiService {
 
   constructor(private http:HttpClient) { }
 
-  postEmployee(data:any){
-    return this.http.post<any>("http://localhost:3000/EmployeeList",data);
+
+  postCustomer(data:any){
+    return this.http.post<any>("http://localhost:3000/CustomerList",data);
   }
-  getEmployeeList()
+  getCustomerList()
   {
-    return this.http.get<any>("http://localhost:3000/EmployeeList");
+    return this.http.get<any>("http://localhost:3000/CustomerList");
   }
   putRecord(data:any, id:number)
   {
-    return this.http.put<any>("http://localhost:3000/EmployeeList/" +id, data);
+    return this.http.put<any>("http://localhost:3000/CustomerList/" +id, data);
   }
   deleteRecord(id:number)
   {
-    return this.http.delete<any>("http://localhost:3000/EmployeeList/" +id);
+    return this.http.delete<any>("http://localhost:3000/CustomerList/" +id);
   }
 }

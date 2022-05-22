@@ -10,7 +10,7 @@ import { subscribeOn } from 'rxjs';
   styleUrls: ['./dialog.component.css']
 })
 export class DialogComponent implements OnInit {
-  EmployeeForm !: FormGroup;
+  CustomerForm !: FormGroup;
   actionBtn:string="Save";
   constructor(private formBuilder: FormBuilder, 
     private api: ApiService, 
@@ -18,7 +18,7 @@ export class DialogComponent implements OnInit {
     private ref:MatDialogRef<DialogComponent>) { }
 
   ngOnInit(): void {
-    this.EmployeeForm=this.formBuilder.group({
+    this.CustomerForm=this.formBuilder.group({
       firstName:['',Validators.required],
       lastName:['',Validators.required],
       Email:['',Validators.required],
@@ -27,23 +27,23 @@ export class DialogComponent implements OnInit {
     if(this.modifyData)
     {
       this.actionBtn="Update";
-      this.EmployeeForm.controls["firstName"].setValue(this.modifyData.firstName);
-      this.EmployeeForm.controls["lastName"].setValue(this.modifyData.lastName);
-      this.EmployeeForm.controls["Email"].setValue(this.modifyData.Email);
-      this.EmployeeForm.controls["Phone"].setValue(this.modifyData.Phone);
+      this.CustomerForm.controls["firstName"].setValue(this.modifyData.firstName);
+      this.CustomerForm.controls["lastName"].setValue(this.modifyData.lastName);
+      this.CustomerForm.controls["Email"].setValue(this.modifyData.Email);
+      this.CustomerForm.controls["Phone"].setValue(this.modifyData.Phone);
     }
   }
-  addEmployee()
+  addCustomer()
   {
     if(!this.modifyData)
     {
-      if(this.EmployeeForm.valid)
+      if(this.CustomerForm.valid)
     {
-      this.api.postEmployee(this.EmployeeForm.value)
+      this.api.postCustomer(this.CustomerForm.value)
       .subscribe({
         next:(res)=>{
           alert("Record added successfully");
-          this.EmployeeForm.reset();
+          this.CustomerForm.reset();
           this.ref.close('save');
         },
         error:()=>
@@ -56,16 +56,16 @@ export class DialogComponent implements OnInit {
     }
     else
     {
-      this.updateEmp();
+      this.updateCust();
     }
   }
-updateEmp()
+updateCust()
 {
-  this.api.putRecord(this.EmployeeForm.value,this.modifyData.id)
+  this.api.putRecord(this.CustomerForm.value,this.modifyData.id)
   .subscribe({
     next:(res)=>{
-      alert("Employee Details updated successfully");
-      this.EmployeeForm.reset();
+      alert("Customer Details updated successfully");
+      this.CustomerForm.reset();
       this.ref.close('update');
     },
     error:()=>{

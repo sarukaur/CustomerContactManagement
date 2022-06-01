@@ -19,10 +19,10 @@ export class DialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.CustomerForm=this.formBuilder.group({
-      firstName:['',Validators.required],
-      lastName:['',Validators.required],
-      Email:['',Validators.required],
-      Phone:['',Validators.required]
+      firstName:['',[Validators.required,Validators.maxLength(50)]],
+      lastName:['',[Validators.required,Validators.maxLength(50)]],
+      Email:['',[Validators.required,Validators.maxLength(100)]],
+      Phone:['',[Validators.required,Validators.minLength(10),Validators.maxLength(12),Validators.pattern('[0-9]*')]]
     })
     if(this.modifyData)
     {
@@ -38,40 +38,41 @@ export class DialogComponent implements OnInit {
     if(!this.modifyData)
     {
       if(this.CustomerForm.valid)
-    {
-      this.api.postCustomer(this.CustomerForm.value)
-      .subscribe({
-        next:(res)=>{
-          alert("Record added successfully");
-          this.CustomerForm.reset();
-          this.ref.close('save');
-        },
-        error:()=>
-        {
-          alert("error while adding the product")
-        }
-        
-      })
-    }
+      {
+        this.api.postCustomer(this.CustomerForm.value)
+        .subscribe({
+          next:(res)=>{
+            alert("Record added successfully");
+            this.CustomerForm.reset();
+            this.ref.close('save');
+          },
+          error:()=>
+          {
+            alert("error while adding the product")
+          }
+        })
+      }
     }
     else
     {
       this.updateCust();
     }
   }
-updateCust()
-{
-  this.api.putRecord(this.CustomerForm.value,this.modifyData.id)
-  .subscribe({
-    next:(res)=>{
-      alert("Customer Details updated successfully");
-      this.CustomerForm.reset();
-      this.ref.close('update');
-    },
-    error:()=>{
-      alert("Error while updating the record");
+  updateCust()
+  {
+    if(this.CustomerForm.valid)
+    {
+      this.api.putRecord(this.CustomerForm.value,this.modifyData.id)
+      .subscribe({
+        next:(res)=>{
+          alert("Customer Details updated successfully");
+          this.CustomerForm.reset();
+          this.ref.close('update');
+        },
+        error:()=>{
+          alert("Error while updating the record");
+        }
+      })
     }
-
-  })
-}
+  }
 }
